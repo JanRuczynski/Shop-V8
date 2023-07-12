@@ -52,13 +52,10 @@ public class FoodController {
                            @RequestParam("imageFood")MultipartFile imageFood,
                            RedirectAttributes attributes) {
         try {
-            System.out.println(foodDto.getCategory().getName());
             foodService.save(imageFood, foodDto);
-            System.out.println("nie error:D");
             attributes.addFlashAttribute("success", "Food added successfully");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("error");
             attributes.addFlashAttribute("error", "Failed to add food.");
         }
         return "redirect:/manage-food";
@@ -113,5 +110,4 @@ public class FoodController {
         }
         return "redirect:/manage-food";
     }
-
 }

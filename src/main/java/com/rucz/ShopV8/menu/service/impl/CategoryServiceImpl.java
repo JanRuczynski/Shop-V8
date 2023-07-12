@@ -83,6 +83,7 @@ public class CategoryServiceImpl implements CategoryService {
             category.setActivated(true);
         }
         categoryRepository.save(category);
+//        TODO: make it change all food in category enabled/disabled
     }
 
     @Override

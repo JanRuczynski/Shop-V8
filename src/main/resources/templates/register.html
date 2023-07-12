@@ -15,6 +15,7 @@
     </div>
     <div th:if="${session.message}">
         <p class="alert alert-danger" th:text="${session.message}"></p>
+<!--        TODO:change message color-->
     </div>
     <form th:action="@{/register-new}" th:object="${adminDto}" method="POST">
 

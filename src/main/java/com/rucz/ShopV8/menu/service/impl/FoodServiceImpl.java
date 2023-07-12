@@ -32,8 +32,7 @@ public class FoodServiceImpl implements FoodService {
     @Override
     public List<FoodDto> findAll() {
         List<Food> foodList = foodRepository.findAll();
-        List<FoodDto> foodDtoList = toDto(foodList);
-        return foodDtoList;
+        return toDto(foodList);
     }
 
     @Override
@@ -61,6 +60,8 @@ public class FoodServiceImpl implements FoodService {
             food.setInStock(foodDto.isInStock());
             food.setCategory(foodDto.getCategory());
             food.setActivated(foodDto.isActivated());
+            food.setDeleted(foodDto.isDeleted());
+            food.setRecommended(food.isRecommended());
 
             return foodRepository.save(food);
         } catch (Exception e) {
@@ -71,7 +72,9 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public void deleteById(Long id) {
-        foodRepository.deleteById(id);
+        Food food = foodRepository.findById(id).get();
+        food.setDeleted(true);
+        foodRepository.save(food);
     }
 
     @Override
@@ -137,6 +140,8 @@ public class FoodServiceImpl implements FoodService {
             foodDto.setActivated(food.isActivated());
             foodDto.setImage(food.getImage());
             foodDto.setCategory(food.getCategory());
+            foodDto.setDeleted(food.isDeleted());
+            foodDto.setRecommended(food.isRecommended());
             foodDtoList.add(foodDto);
         }
         return foodDtoList;
@@ -145,22 +150,25 @@ public class FoodServiceImpl implements FoodService {
     @Override
     public void changeEnabledById(Long id) {
         Food food = getFoodById(id);
-        if(food.isActivated()) {
-            food.setActivated(false);
-        } else {
-            food.setActivated(true);
-        }
+        food.setActivated(!food.isActivated());
         foodRepository.save(food);
     }
 
     @Override
     public void changeInStockById(Long id) {
         Food food = getFoodById(id);
-        if(food.isInStock()) {
-            food.setInStock(false);
-        } else {
-            food.setInStock(true);
-        }
+        food.setInStock(!food.isInStock());
+        foodRepository.save(food);
+    }
+
+    @Override
+    public List<Food> findAllByRecommended() {
+        return foodRepository.findAllByRecommended();
+    }
+
+    public void changeRecommendedById(Long id) {
+        Food food = getFoodById(id);
+        food.setRecommended(!food.isRecommended());
         foodRepository.save(food);
     }
 }

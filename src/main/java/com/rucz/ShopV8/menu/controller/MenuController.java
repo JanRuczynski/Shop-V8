@@ -25,9 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigDecimal;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Controller
 public class MenuController {
@@ -62,15 +60,7 @@ public class MenuController {
     public String menu(Model model) {
         List<Food> foodList = foodRepository.findAll();
         List<Category> categoryList = categoryRepository.findAllByActivated();
-        List<Food> recommended = new ArrayList<>();
-        Random random = new Random();
-        for (int i = 0; i<3; i++) {
-            int randomIndex = random.nextInt(foodList.size());
-            Food food = foodList.get(randomIndex);
-            if (!recommended.contains(foodList.get(randomIndex))) {
-                recommended.add(food);
-            }
-        }
+        List<Food> recommended = foodRepository.findAllByRecommended();
         model.addAttribute("recommended", recommended);
         model.addAttribute("foods", foodList);
         model.addAttribute("food", new Food());

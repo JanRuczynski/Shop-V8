@@ -26,4 +26,6 @@ public interface FoodService {
     List<Food> getRelatedProducts(Long categoryId);
     List<Food> filterHighPrice();
     List<Food> filterLowPrice();
+
+    List<Food> findAllByRecommended();
 }

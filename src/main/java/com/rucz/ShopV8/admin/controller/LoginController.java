@@ -5,6 +5,7 @@ import com.rucz.ShopV8.admin.model.Admin;
 import com.rucz.ShopV8.admin.model.Role;
 import com.rucz.ShopV8.admin.repository.RoleRepository;
 import com.rucz.ShopV8.admin.service.impl.AdminServiceImpl;
+import com.sun.xml.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -99,4 +100,6 @@ public class LoginController {
         }
         return "register";
     }
+
+//    TODO:fix delete
 }

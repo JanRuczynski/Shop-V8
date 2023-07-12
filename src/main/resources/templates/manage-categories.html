@@ -11,7 +11,7 @@
 <nav th:replace="fragments :: topbar"></nav>
 <div class="col-md-5 col-sm-8 mx-auto my-4">
     <h2>Manage categories</h2>
-        <table class="table table-bordered table-sm table-striped table-hover">
+        <table class="table table-bordered table-sm table-striped table-hover mt-4">
             <thead>
             <tr>
                 <th class="text-center" style="width:5%" scope="col">ID</th>
@@ -39,6 +39,7 @@
                     <form id="delete-form-${category.id}" th:action="@{/delete-category/{id}(id=${category.id})}" method="post">
                         <input type="hidden" name="_method" value="post" />
                     </form>
+                    <!--        TODO: make buttons full height-->
                 </td>
             </tr>
             </tbody>

@@ -31,4 +31,8 @@ public class FoodDto {
     private Category category;
 
     private boolean isActivated;
+
+    private boolean deleted;
+
+    private boolean recommended;
 }

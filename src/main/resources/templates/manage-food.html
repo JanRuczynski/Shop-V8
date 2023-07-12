@@ -13,7 +13,7 @@
 
 <div class="col-md-8 col-sm-11 mx-auto my-5">
   <h2>Manage food</h2>
-  <table class="table table-bordered table-sm table-striped table-hover">
+  <table class="table table-bordered table-sm table-striped table-hover mt-4">
     <thead>
     <tr>
       <th class="text-center" style="width:5%" scope="col">ID</th>
@@ -39,7 +39,7 @@
       <td th:text="${food.isInStock}"  class="text-center vertical-center" th:classappend="${food.isInStock == true ? 'text-success' : 'text-danger'}"></td>
       <!--                <td><img th:if="${category.photoFilename}" th:src="@{/people/images/{filename}(filename=${person.photoFilename})}" height="32px" width="32px"/></td>-->
       <td><img src="" style="height: 80px; width: 80px;" th:src = "*{'data:image/jpeg;base64,' + {food.image}}"></td>
-      <td th:text="${food.category.name}"></td> <!-- TODO fix null-->
+      <td th:text="${food.category.name}"></td> <!-- TODO: fix null-->
       <td th:text="${food.isActivated}"  class="text-center vertical-center" th:classappend="${food.isActivated == true ? 'text-success' : 'text-danger'}"></td>
       <td>
         <a th:href="@{/update-food/{id} (id = ${food.id})}" class="btn btn-primary">Update</a>
@@ -51,6 +51,7 @@
         <form id="delete-form-${food.id}" th:action="@{/delete-food/{id}(id=${food.id})}" method="post">
           <input type="hidden" name="_method" value="post" />
         </form>
+<!--        TODO: make buttons full height-->
       </td>
     </tr>
     </tbody>
@@ -69,7 +70,7 @@
 
     <div class="mb-3">
       <label for="price" class="form-label">Price</label>
-      <input type="number" step="0.01" pattern="\d+(\.\d{1,2})?" class="form-control" id="price" th:field="*{price}" th:errorclass="is-invalid" aria-describedby="nameHelp" required="">
+      <input type="number" step="0.1" pattern="\d+(\.\d{1,2})?" class="form-control" id="price" th:field="*{price}" th:errorclass="is-invalid" aria-describedby="nameHelp" required="">
       <div id="validationPrice" class="invalid-feedback" th:errors="*{price}">
         Please set a food price.
       </div>

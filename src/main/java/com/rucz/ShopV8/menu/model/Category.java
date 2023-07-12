@@ -25,7 +25,9 @@ public class Category {
 
     @Lob
     @Column(columnDefinition = "MEDIUMBLOB")
-    private String image;                           //TODO fix image size limitation
+    private String image;                           //TODO: fix image size limitation
+
+    private boolean deleted = false;
 
     public Category(String name){
         this.name = name;

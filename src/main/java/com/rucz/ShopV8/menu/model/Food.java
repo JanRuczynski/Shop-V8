@@ -39,4 +39,8 @@ public class Food {
     private Category category;
 
     private boolean isActivated = true;
+
+    private boolean deleted = false;
+
+    private boolean recommended = false;
 }
