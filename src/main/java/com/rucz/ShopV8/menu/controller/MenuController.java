@@ -104,19 +104,18 @@ public class MenuController {
 
 
         if (itemDto.getAdmin() == null) {
-            return "redirect:/show-category/" + categoryId;
-        }
-        Food food = foodRepository.findById(foodId).get();
-        itemDto.setFood(food);
+            attributes.addAttribute("notLoggedIn", true);
+        } else if (principal != null) {
+            Food food = foodRepository.findById(foodId).get();
+            itemDto.setFood(food);
 
-        itemDto.setName(food.getName());
+            itemDto.setName(food.getName());
 
-        itemDto.setPrice(food.getPrice());
-        itemDto.setTotalPrice(food.getPrice().multiply(BigDecimal.valueOf(itemDto.getQuantity())));
+            itemDto.setPrice(food.getPrice());
+            itemDto.setTotalPrice(food.getPrice().multiply(BigDecimal.valueOf(itemDto.getQuantity())));
 
-        System.out.println(admin.getFirstName());
-        System.out.println(itemDto.getFood().getName());
-        if (principal != null) {
+            System.out.println(admin.getFirstName());
+            System.out.println(itemDto.getFood().getName());
             try {
                 itemService.save(itemDto);
                 attributes.addFlashAttribute("success", "Item added successfully");

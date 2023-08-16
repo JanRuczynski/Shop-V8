@@ -29,6 +29,9 @@
 
                 <h2>Wybierz Danie</h2>
                 <div class="container mt-5">
+                    <div th:if = "${param.notLoggedIn}" class="alert alert-danger text-center">
+                        Login to add items to your cart.
+                    </div>
                     <div class="row">
 
                         <div class="container mt-5 mb-5" >

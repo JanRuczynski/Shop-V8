@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class Order {
     @ElementCollection
     private List<Long> itemsInOrderIds;
 
+    @NotEmpty(message = "address cannot be empty")
     private String address;
 
     private String memo;

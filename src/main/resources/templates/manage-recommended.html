@@ -30,8 +30,8 @@
       <td th:text="${food.name}"></td>
       <td><img src="" style="height: 80px; width: 80px;" th:src = "*{'data:image/jpeg;base64,' + {food.image}}"></td>
       <td>
-        <a th:if = "${food.recommended == true}" th:href="@{/manage-recommended/change-recommended/{id} (id = ${food.id})}" class="btn btn-warning">Unset recommended</a>
-        <a th:if = "${food.recommended == false}" th:href="@{/manage-recommended/change-recommended/{id} (id = ${food.id})}" class="btn btn-success">Set recommended</a>
+        <a th:if = "${food.recommended == true}" th:href="@{/change-recommended/{id} (id = ${food.id})}" class="btn btn-warning">Unset recommended</a>
+        <a th:if = "${food.recommended == false}" th:href="@{/change-recommended/{id} (id = ${food.id})}" class="btn btn-success">Set recommended</a>
       </td>
     </tr>
     </tbody>

@@ -2,6 +2,7 @@ package com.rucz.ShopV8.menu.service.impl;
 
 import com.rucz.ShopV8.menu.dto.CategoryDto;
 import com.rucz.ShopV8.menu.model.Category;
+import com.rucz.ShopV8.menu.model.Food;
 import com.rucz.ShopV8.menu.repository.CategoryRepository;
 import com.rucz.ShopV8.menu.service.CategoryService;
 import com.rucz.ShopV8.menu.utils.ImageUpload;
@@ -71,7 +72,9 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void deleteById(Long id) {
-        categoryRepository.deleteById(id);
+        Category category = categoryRepository.findById(id).get();
+        category.setDeleted(true);
+        categoryRepository.save(category);
     }
 
     @Override

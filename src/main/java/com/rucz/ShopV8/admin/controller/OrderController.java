@@ -39,7 +39,6 @@ public class OrderController {
         model.addAttribute("item", new Item());
         model.addAttribute("items", items);
         model.addAttribute("totalCartPrice", itemService.getTotalActivatedCartPrice());
-        model.addAttribute("order", new OrderDto());
         return "manage-orders";
     }
 }
